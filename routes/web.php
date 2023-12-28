@@ -17,7 +17,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view("home", [
+    return view("welcome", [
       "title" => "Home"
     ]);
   });
@@ -26,7 +26,7 @@ Route::get('/', function () {
   Route::middleware(["guest"])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
-    Route::get('/register', [RegisterController::class, 'index']);
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
     //Untuk Yang Belum Punya Akun
   });

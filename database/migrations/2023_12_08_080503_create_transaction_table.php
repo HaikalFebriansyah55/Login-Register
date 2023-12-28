@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id('transaction_id');
             $table->unsignedBigInteger("id");
             $table->foreign("id")->references("id")->on('users');
-            $table->foreign('id')->references('id')->on('users');
             $table->date('transaction_date');
             $table->string('transaction_status');
         });
