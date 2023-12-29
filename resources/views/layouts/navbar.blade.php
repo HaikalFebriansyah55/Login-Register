@@ -7,8 +7,17 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 link-secondary text-white">Home</a></li>
-                <li><a href="/about" class="nav-link px-2 link-body-emphasis text-light-emphasis">Library</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis text-light-emphasis">Community</a></li>
+                @auth
+                    @if(Auth::user()->role == 'user')
+                        <li><a href="/about" class="nav-link px-2 link-body-emphasis text-light-emphasis">Library</a></li>
+                        <li><a href="#" class="nav-link px-2 link-body-emphasis text-light-emphasis">Community</a></li> 
+                    @endif
+                @endauth
+                @auth
+                    @if(Auth::user()->role == 'admin')
+                        <li><a href="#" class="nav-link px-2 link-body-emphasis text-light-emphasis">Admin Panel</a></li>
+                    @endif
+                @endauth
             </ul>
 
             @guest

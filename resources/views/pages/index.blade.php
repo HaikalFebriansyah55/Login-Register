@@ -1,5 +1,5 @@
 @extends("layouts.master")
-@section('title', 'Login')
+@section('title', 'Home')
 @section('content')
 
 <main class="py-4">

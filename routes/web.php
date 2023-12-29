@@ -17,39 +17,35 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view("pages.index"); 
+    return view("pages.index");
 });
-  
-  
-  Route::middleware(["guest"])->group(function () {
+
+Route::middleware(["guest"])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
-    //Untuk Yang Belum Punya Akun
-  });
-  
-  Route::middleware(['auth'])->group(function () {
-    //Untuk Yang Sudah Punya Akun
+    // Untuk Yang Belum Punya Akun
+});
+
+Route::middleware(['auth'])->group(function () {
+    // Untuk Yang Sudah Punya Akun
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    
     Route::middleware(["userakses:admin"])->group(function(){
-      //Untuk Akun Dengan Role Admin
-      Route::get("/dashboard", [DashBoardController::class, "index"]);
-      
-    });
-    Route::middleware(["userakses:user"])->group(function () {
-      //Untuk Akun Dengan Role User
-    //   Route::get('/blog', [PostController::class, "index"]);
-    //   Route::get('blog/{post}', [PostController::class, "show"]);
-      Route::get('/about', function () {
-        return view("pages.about", [
-          "name" => "Haikal Febriansyah",
-          "email" => "haiklafebriansyah743@gmail.com",
-          "image" => "haikal.jpg",
-          "title" => "About"
-        ]);
-      
-    });
+        // Untuk Akun Dengan Role Admin
+        Route::get("/dashboard", [DashboardController::class, "index"]); // Fix typo in controller name
     });
     
-  });
+    Route::middleware(["userakses:user"])->group(function () {
+        // Untuk Akun Dengan Role User
+        Route::get('/about', function () {
+            return view("pages.about", [
+                "name" => "Haikal Febriansyah",
+                "email" => "haiklafebriansyah743@gmail.com",
+                "image" => "haikal.jpg",
+                "title" => "About"
+            ]);
+        });
+    });
+});
