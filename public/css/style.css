@@ -4,6 +4,14 @@
 }
 
 /* Ganti warna latar belakang item daftar menjadi gelap ketika diarahkan */
-.nav-link:hover {
-    background-color: #343a40; /* Sesuaikan dengan warna latar belakang yang diinginkan */
+body{
+    background-color: #040A11;;
+}
+
+.login ,.register{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

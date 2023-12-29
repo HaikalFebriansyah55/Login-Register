@@ -17,10 +17,8 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view("welcome", [
-      "title" => "Home"
-    ]);
-  });
+    return view("pages.index"); 
+});
   
   
   Route::middleware(["guest"])->group(function () {
@@ -33,7 +31,7 @@ Route::get('/', function () {
   
   Route::middleware(['auth'])->group(function () {
     //Untuk Yang Sudah Punya Akun
-    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::middleware(["userakses:admin"])->group(function(){
       //Untuk Akun Dengan Role Admin
       Route::get("/dashboard", [DashBoardController::class, "index"]);
@@ -44,7 +42,7 @@ Route::get('/', function () {
     //   Route::get('/blog', [PostController::class, "index"]);
     //   Route::get('blog/{post}', [PostController::class, "show"]);
       Route::get('/about', function () {
-        return view("about", [
+        return view("pages.about", [
           "name" => "Haikal Febriansyah",
           "email" => "haiklafebriansyah743@gmail.com",
           "image" => "haikal.jpg",

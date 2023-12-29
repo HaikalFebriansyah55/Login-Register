@@ -9,7 +9,7 @@ use Session;
 class LoginController extends Controller
 {
     public function index(){
-        return view('login/index', [
+        return view('auth.login', [
             'title'=>"Login",
         ]);
     }

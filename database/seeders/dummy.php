@@ -19,14 +19,16 @@ class dummy extends Seeder
                 'username' => 'user123',
                 "email"=>"user@gmail.com",
                 'role'=>"user",
-                'password'=>bcrypt("user123456")
+                'password'=>bcrypt("user123456"),
+                'img'=>'default.png'
             ],
             [
                 'name' => 'Admin',
                 'username' => 'admin123',
                 "email"=>"admin@gmail.com",
                 'role'=>"admin",
-                'password'=>bcrypt("admin123456")
+                'password'=>bcrypt("admin123456"),
+                'img'=>'default.png'
             ]
         ];
         foreach($userData as $key=>$val){

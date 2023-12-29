@@ -1,5 +1,5 @@
-@extends('layouts.main')
-@section('container')
+@extends('layouts.master')
+@section('content')
   <h1>Halaman About</h1>
   <h3>{{ $name }}</h3>
   <p>{{ $email }}</p>
