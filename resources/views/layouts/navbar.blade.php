@@ -15,7 +15,7 @@
                 @endauth
                 @auth
                     @if(Auth::user()->role == 'admin')
-                        <li><a href="#" class="nav-link px-2 link-body-emphasis text-light-emphasis">Admin Panel</a></li>
+                        <li><a href="/dashboard" class="nav-link px-2 link-body-emphasis text-light-emphasis">Dashboard</a></li>
                     @endif
                 @endauth
             </ul>

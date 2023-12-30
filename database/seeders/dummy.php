@@ -27,7 +27,7 @@ class dummy extends Seeder
                 'username' => 'admin123',
                 "email"=>"admin@gmail.com",
                 'role'=>"admin",
-                'password'=>bcrypt("admin123456"),
+                'password'=>bcrypt("admin"),
                 'img'=>'default.png'
             ]
         ];

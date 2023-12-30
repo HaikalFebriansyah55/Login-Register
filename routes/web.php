@@ -34,7 +34,15 @@ Route::middleware(['auth'])->group(function () {
     
     Route::middleware(["userakses:admin"])->group(function(){
         // Untuk Akun Dengan Role Admin
-        Route::get("/dashboard", [DashboardController::class, "index"]); // Fix typo in controller name
+        Route::get("/dashboard", [DashboardController::class, "index"]); 
+        Route::get("/dashboard/users", [DashboardController::class, "users"]);
+        Route::get("/dashboard/users/add", [DashboardController::class, "usersAdd"]);
+        Route::post("/dashboard/users/store", [DashboardController::class, "usersStore"])->name("usersStore");
+        Route::get("/dashboard/users/edit/{id}", [DashboardController::class, "userEdit"])->name("userEdit");
+        Route::put("/dashboard/users/update/{id}", [DashboardController::class, "userUpdate"])->name("userUpdate");
+        Route::get('/dashboard/users/{id}', [DashboardController::class, 'userDelete'])->name('dashboard.users.delete');
+        Route::get("/dashboard/publishers", [DashboardController::class, "publishers"]);
+        Route::get("/dashboard/games", [DashboardController::class, "games"]);
     });
     
     Route::middleware(["userakses:user"])->group(function () {
