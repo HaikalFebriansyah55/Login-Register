@@ -37,8 +37,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Control Panel:</h6>
             <a class="collapse-item" href="/dashboard/users/add">Users</a>
-            <a class="collapse-item" href="/dashboard/publishers">Publishers</a>
-            <a class="collapse-item" href="/dashboard/games">Games</a>
+            <a class="collapse-item" href="/dashboard/publishers/add">Publishers</a>
+            <a class="collapse-item" href="/dashboard/games/add">Games</a>
         </div>
     </div>
 </li>

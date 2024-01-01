@@ -16,15 +16,15 @@ class dummy extends Seeder
         $userData = [
             [
                 'name' => 'User',
-                'username' => 'user123',
+                'username' => 'user',
                 "email"=>"user@gmail.com",
                 'role'=>"user",
-                'password'=>bcrypt("user123456"),
+                'password'=>bcrypt("users"),
                 'img'=>'default.png'
             ],
             [
                 'name' => 'Admin',
-                'username' => 'admin123',
+                'username' => 'admin',
                 "email"=>"admin@gmail.com",
                 'role'=>"admin",
                 'password'=>bcrypt("admin"),

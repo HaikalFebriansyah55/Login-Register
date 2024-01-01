@@ -41,7 +41,6 @@
                     <label for="role" class="form-label">Role</label>
                     <select name="role" class="form-select @error('role') is-invalid @enderror" id="role">
                         <option value="admin">Admin</option>
-                        <option value="publisher">Publisher</option>
                         <option value="user">User</option>
                     </select>
                     @error('role')
