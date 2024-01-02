@@ -9,22 +9,31 @@ use Session;
 class LoginController extends Controller
 {
     public function index(){
-        return view('login/index', [
+        return view('auth.login', [
             'title'=>"Login",
         ]);
     }
+
     public function login(Request $request){
         $loginData = $request->validate([
-            'username'=>['required','min:3','max:255'],
-            "password"=>'required|min:5|max:255'
+            'username' => ['required', 'min:3', 'max:255'],
+            'password' => 'required|min:5|max:255',
         ]);
-        if (Auth::attempt($loginData)){
+
+        if (Auth::attempt($loginData)) {
             $request->session()->regenerate();
-            return redirect()->intended('/about');
+
+            // Check the user's role and redirect accordingly
+            if (Auth::user()->is_admin) {
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect()->intended('/');
+            }
         }
-        return back()->with("loginError", "Username Atau Pasword Tidak Terdaftar");
-        
+
+        return back()->with("loginError", "Username atau Password Tidak Terdaftar");
     }
+
     public function logout(Request $request){
         Auth::logout();
         request()->session()->invalidate();

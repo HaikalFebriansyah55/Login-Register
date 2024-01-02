@@ -1,0 +1,17 @@
+ /* Ganti warna ikon menjadi putih */
+ .text-white {
+    fill: currentColor;
+}
+
+/* Ganti warna latar belakang item daftar menjadi gelap ketika diarahkan */
+body{
+    background-color: #040A11;;
+}
+
+.login ,.register{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('publisher_name');
             $table->string('address');
             $table->string('contact');
+            $table->timestamps();
         });        
 
     }

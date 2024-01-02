@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id('game_id');
             $table->string('title');
-            $table->string('deskripsi');
-            $table->string('price');
-            $table->unsignedBigInteger('publisher_id'); // Use unsignedBigInteger here
+            $table->text('deskripsi'); // Assuming this is the description field
+            $table->float('price', 8, 2);
+            $table->unsignedBigInteger('publisher_id');
             $table->foreign('publisher_id')->references('publisher_id')->on('publishers')->onDelete('cascade');
             $table->date('release_date');
             $table->string('platform');
+            $table->string('image');
+            $table->timestamps(); // Add timestamps here if you want to track creation and update times
         });
     }
 
@@ -28,9 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
         Schema::dropIfExists('games');
     }
 };
-    
-
