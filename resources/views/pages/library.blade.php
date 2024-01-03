@@ -4,10 +4,9 @@
 
 @section('content')
 <style>
-    
-
     .library {
-        margin-top: 100px;
+      padding-top:100px;
+      padding-bottom: 600px;
     }
 
     .library-header {
@@ -18,7 +17,7 @@
     .library-header h2 {
         font-size: 36px;
         font-weight: bold;
-        color: #333; /* Sesuaikan dengan warna teks yang diinginkan */
+        color: white; /* Adjust text color as needed */
     }
 
     .game-thumbnail {
@@ -27,6 +26,12 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
+    }
+
+    .game-thumbnail img {
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
 
     .game-thumbnail:hover {
@@ -50,7 +55,7 @@
 </div>
 
 <script>
-    // Inisialisasi Tooltip
+    // Initialize Tooltip
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
