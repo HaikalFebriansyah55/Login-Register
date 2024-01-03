@@ -59,7 +59,7 @@
 </style>
 
 <main class="py-4">
-    <img src="https://giffiles.alphacoders.com/218/218301.gif" class="img-fluid" style="background-color: #040A11;" />
+    <img src="https://giffiles.alphacoders.com/218/218301.gif" class="img-fluid" />
     <div class="container mt-4">
         <div class="row">
             @php
@@ -75,7 +75,7 @@
                 </div>
             @endforeach
         
-            <a href="/gamedetail/3">
+            <a href="/gamedetail/7">
                 <img src="{{ asset('https://cdn.akamai.steamstatic.com/steam/apps/1194810/extras/AM4186_MYM_Steam_Store_Page_GIFs_2-create-destroy_EN_UNCOMPRESSED.gif?t=1701198702') }}" alt="meetymaker"  style="width: 100%; height: 200px;">
             </a>
         </div>

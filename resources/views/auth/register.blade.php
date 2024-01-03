@@ -2,7 +2,7 @@
 @section('title', 'Register')
 @section('content')
 
-<div class="register row justify-content-center">
+<div class="register row justify-content-center align-items-center" style="height: 100vh;">
   <div class="col-lg-6">
     <div class="card mt-5">
       <div class="card-body">
@@ -11,7 +11,7 @@
         <form action="/register" method="post">
           @csrf
           <div class="mb-3">
-            <label for="name" class="form-label">Nama Pengguna</label>
+            <label for="name" class="form-label">Full Name</label>
             <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Nama Pengguna" required value="{{ old('name') }}">
             @error('name')
               <div class="invalid-feedback">{{ $message }}</div>
@@ -25,7 +25,7 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Alamat Email</label>
+            <label for="email" class="form-label">Email</label>
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
             @error('email')
               <div class="invalid-feedback">{{ $message }}</div>
@@ -49,3 +49,35 @@
   </div>
 </div>
 @endsection
+
+<style>
+  /* Ganti warna ikon menjadi putih */
+  .text-white {
+    fill: currentColor;
+  }
+
+  body {
+    position: relative;
+    background: url('https://pbs.twimg.com/media/FmXPN1oXoAEJb6F.png:large') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  .register, .login {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>

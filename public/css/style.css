@@ -3,12 +3,25 @@
     fill: currentColor;
 }
 
-/* Ganti warna latar belakang item daftar menjadi gelap ketika diarahkan */
-body{
-    background-color: #040A11;;
+body {
+    position: relative; /* Diperlukan untuk menempatkan overlay relatif terhadap elemen ini */
+    background: url('https://pbs.twimg.com/media/FmXPN1oXoAEJb6F.png:large') no-repeat center center fixed;
+    background-size: cover;
 }
 
-.login ,.register{
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Warna hitam dengan tingkat transparansi (alpha) sebesar 0.5 */
+    z-index: -1; /* Letakkan overlay di belakang konten utama */
+}
+
+
+.login, .register {
     position: absolute;
     width: 100%;
     top: 50%;

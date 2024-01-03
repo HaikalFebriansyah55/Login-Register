@@ -4,14 +4,54 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Publisher;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return view('admin.pages.index');
+        // Mendapatkan data transaksi per game
+        $gameTransactions = Transaction::select('game_id', DB::raw('count(*) as total_transactions'))
+            ->groupBy('game_id')
+            ->orderByDesc('total_transactions')
+            ->get();
+
+        // Mendapatkan data game untuk grafik
+        $gameData = Game::select('title')->get();
+        $gameLabels = $gameData->pluck('title')->toArray();
+        $gameSalesData = $gameTransactions->pluck('total_transactions')->toArray();
+
+        // Dummy data untuk contoh grafik
+        $gameChart = [
+            'labels' => $gameLabels,
+            'datasets' => [
+                [
+                    'label' => 'Jumlah Penjualan',
+                    'data' => $gameSalesData,
+                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
+                    'borderColor' => 'rgba(75, 192, 192, 1)',
+                    'borderWidth' => 1,
+                ],
+            ],
+        ];
+
+        // Dummy data untuk contoh grafik transaksi
+        $transactionChart = [
+            'labels' => ["January", "February", "March", "April", "May"],
+            'datasets' => [
+                [
+                    'label' => 'Jumlah Transaksi',
+                    'data' => [120, 150, 100, 180, 130],
+                    'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
+                    'borderColor' => 'rgba(255, 99, 132, 1)',
+                    'borderWidth' => 1,
+                ],
+            ],
+        ];
+        return view('admin.pages.index',compact('gameChart', 'transactionChart', 'gameTransactions'));
     }
     # -------------------------------------Users-------------------------------------
     public function users(){

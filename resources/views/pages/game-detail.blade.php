@@ -4,8 +4,13 @@
 
 @section('content')
 <style>
+    body {
+        color: #fff; /* Set text color to white for better visibility */
+    }
+
     .game-detail {
-        margin-top: 100px;
+        padding-top: 100px;
+        padding-bottom: 450px;
     }
 
     .game-card {
@@ -54,7 +59,7 @@
                 <!-- Form for Purchase -->
                 <form action="{{ route('purchaseGame', ['id' => $data->game_id]) }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-primary">Purchase Now</button>
+                    <button type="submit" class="btn btn-success">Purchase Now</button>
                 </form>
             </div>
         </div>
