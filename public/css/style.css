@@ -28,3 +28,15 @@ body::before {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.form-label, .judul, .judul2{
+    color: white;
+}
+.card-body{
+    border: none;
+}
+.active{
+    color: white;
+}
+.non{
+    color: gray;
+}

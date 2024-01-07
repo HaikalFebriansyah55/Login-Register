@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $fillable = ['game_id', 'id'];
+    protected $table = 'transactions';
+    protected $fillable = ['game_id', 'id','transaction_status', 'transaction_date'];
 
     // Relasi dengan model Game
     public function game()

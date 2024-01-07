@@ -24,8 +24,14 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Users Data Table</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Publishers Data Table</h6>
         </div>
+        @if (session()->has('danger'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('danger') }}
+
+                </div>
+            @endif
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -48,7 +54,7 @@
                                     <a type="button" class="btn btn-info btn-circle" href="/dashboard/publishers/edit/{{ $datas->publisher_id }}"><i
                                         class="fas fa-info-circle"></i></a>
                                     <a class="btn btn-circle btn-danger"
-                                    onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $datas->publisher_id}}')"
+                                    onclick="return confirm('Apakah anda yakin ingin menghapus data publisher {{ $datas->publisher_name}}')"
                                     href="/dashboard/publishers/{{ $datas->publisher_id }}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

@@ -21,7 +21,6 @@ use App\Models\Transaction;
 
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/gamedetail/{id}',[HomeController::class, 'gameDetail'])->name('gameDetail');
-Route::post('/purchase-game/{id}', [TransactionController::class,'purchaseGame'])->name('purchaseGame');
 
 Route::middleware(["guest"])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -65,5 +64,6 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(["userakses:user"])->group(function () {
         // Untuk Akun Dengan Role User
         Route::get('/library', [TransactionController::class, 'library'])->name('library');
+        Route::post('/purchase-game/{id}', [TransactionController::class,'purchaseGame'])->name('purchaseGame');
     });
 });

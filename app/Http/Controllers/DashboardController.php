@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class DashboardController extends Controller
 {
@@ -51,7 +52,9 @@ class DashboardController extends Controller
                 ],
             ],
         ];
-        return view('admin.pages.index',compact('gameChart', 'transactionChart', 'gameTransactions'));
+        return view('admin.pages.index',compact('gameChart', 'transactionChart', 'gameTransactions'), [
+            'title'=>"Dashboard"
+        ]);
     }
     # -------------------------------------Users-------------------------------------
     public function users(){
@@ -114,6 +117,17 @@ class DashboardController extends Controller
     }
     public function userDelete($id)
     {
+         // Temukan pengguna berdasarkan ID
+         $user = User::findOrFail($id);
+
+         // Lakukan pemeriksaan apakah pengguna memiliki transaksi
+         $hasTransactions = Transaction::where('id', $user->id)->exists();
+ 
+         // Jika pengguna memiliki transaksi, tampilkan notifikasi error
+         if ($hasTransactions) {
+            return redirect('dashboard/users')->with('danger', 'Pengguna memiliki transaksi. Tidak dapat menghapus pengguna.');
+         }
+ 
         $data = User::find($id);
         $data->delete();
 
@@ -165,7 +179,16 @@ class DashboardController extends Controller
     }
     
     public function publisherDelete($publisher_id){
-        $data = Publisher::find($publisher_id);
+        // Temukan pengguna berdasarkan ID
+        $data = Publisher::findOrFail($publisher_id);
+
+        // Lakukan pemeriksaan apakah pengguna memiliki transaksi
+        $hasTransactions = Game::where('publisher_id', $data->publisher_id)->exists();
+
+        // Jika pengguna memiliki transaksi, tampilkan notifikasi error
+        if ($hasTransactions) {
+           return redirect('dashboard/publishers')->with('danger', 'Tidak dapat menghapus publisher game.');
+        }
         $data->delete();
         return redirect('dashboard/publishers')->with('danger', 'Data Berhasil Di Hapus');
     }
@@ -245,6 +268,14 @@ class DashboardController extends Controller
 
     public function gameDelete($id){
         $data = Game::find($id);
+
+        // Lakukan pemeriksaan apakah pengguna memiliki transaksi
+        $hasTransactions = Transaction::where('game_id', $data->game_id)->exists();
+
+        // Jika pengguna memiliki transaksi, tampilkan notifikasi error
+        if ($hasTransactions) {
+           return redirect('dashboard/games')->with('danger', 'Tidak dapat menghapus game.');
+        }
         $data->delete();
         return redirect('dashboard/games')->with('danger', 'Data Berhasil Di Hapus');
     }

@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="register row justify-content-center align-items-center" style="height: 100vh;">
-  <div class="col-lg-6">
-    <div class="card mt-5">
-      <div class="card-body">
-        <h1 class="h3 mb-3 fw-normal text-center">Form Registrasi</h1>
+  <div class="card col-lg-6 bg-dark">
+    <div class="card mt-1 bg-dark border border-0">
+      <div class="card-body bg-dark">
+        <h1 class="h3 mb-3 fw-normal text-center judul">Form Registrasi</h1>
         
         <form action="/register" method="post">
           @csrf
@@ -42,7 +42,7 @@
         </form>
 
         <div class="text-center mt-3">
-          <small>Sudah Punya Akun? <a href="/login">Login</a></small>
+          <small class="judul2">Sudah Punya Akun? <a href="/login">Login</a></small>
         </div>
       </div>
     </div>

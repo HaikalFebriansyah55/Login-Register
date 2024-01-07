@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Role</label>
-                    <select name="role" class="form-select @error('role') is-invalid @enderror" id="role">
+                    <select name="role" class="form-control @error('role') is-invalid @enderror" id="role">
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select>

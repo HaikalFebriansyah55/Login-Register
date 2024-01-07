@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreign("id")->references("id")->on('users');
             $table->unsignedBigInteger("game_id");
             $table->foreign("game_id")->references("game_id")->on('games');
-            $table->date('transaction_date');
+            $table->date('transaction_date')->default(now());
             $table->string('transaction_status');
             $table->timestamps();
         });

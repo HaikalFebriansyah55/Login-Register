@@ -6,15 +6,15 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 link-secondary text-white">Home</a></li>
+                <li><a href="/" class="nav-link px-2 {{ $title === 'Home' ? 'active' : 'non' }}">Home</a></li>
                 @auth
                     @if(Auth::user()->role == 'user')
-                        <li><a href="/library" class="nav-link px-2 link-body-emphasis text-light-emphasis">Library</a></li>
+                        <li><a href="/library" class="nav-link px-2 {{ $title === 'Library' ? 'active' : 'non' }} ">Library</a></li>
                     @endif
                 @endauth
                 @auth
                     @if(Auth::user()->role == 'admin')
-                        <li><a href="/dashboard" class="nav-link px-2 link-body-emphasis text-light-emphasis">Dashboard</a></li>
+                        <li><a href="/dashboard" class="nav-link px-2 {{ $title === 'Dashboard' ? 'active' : 'non' }}">Dashboard</a></li>
                     @endif
                 @endauth
             </ul>
@@ -30,7 +30,7 @@
                     <img src="{{asset('img/'.Auth::user()->img)}}" alt="{{ auth()->user()->name }}" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small bg-dark">
-                    <li><a class="dropdown-item text-white bg-dark" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a></li>
+                    <li><a class="dropdown-item text-white bg-dark" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a></li>
                 </ul>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
