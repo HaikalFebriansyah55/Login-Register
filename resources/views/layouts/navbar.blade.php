@@ -1,6 +1,7 @@
 <header class="p-3 bg-dark fixed-top" style="background-color: #040A11;">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <img src="{{ asset('img/Gameconn.png') }} alt="Gameconn" width="100" height="30" class="me-2">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <svg class="bi me-2 text-white" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
             </a>
